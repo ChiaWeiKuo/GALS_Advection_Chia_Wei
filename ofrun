@@ -1,0 +1,18 @@
+#!/bin/sh
+#SBATCH --partition=slurm_shortgpu
+#SBATCH --nodes=1
+#SBATCH --tasks=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=40
+#SBATCH -e job_err
+#SBATCH -o job_out
+###SBATCH --gres=gpu:1 # not needed for OpenMP
+
+##./GALS_Advection 
+
+./GALS_Advection 32
+#./GALS_Advection 32
+#./GALS_Advection 32
+
+mv job_out ggg.out
+mv job_err ggg.err
